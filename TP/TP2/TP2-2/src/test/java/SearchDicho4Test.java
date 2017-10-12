@@ -81,4 +81,5 @@ public class SearchDicho4Test {
 		shop.insertArticle(articleExpensive);
 		assertTrue(shop.searchDicho4(articleExpensive)) ;
 	}
+	
 }
