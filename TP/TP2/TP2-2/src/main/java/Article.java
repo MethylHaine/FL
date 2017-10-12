@@ -1,43 +1,50 @@
 package main.java;
 /**
+ * MESTRALLET Alexis
+ * RISCH Philippe
+ *
  * classe Article utilisée dans Magasin
  * 
  * @author PR
  *
  */
 public class Article {
-	private String nom;
-	private double prix;
-	private int numero;
+	private String name ;
+	private double price;
+	private int number;
 
-	public Article(String s, double p, int n) {
-		assert ( ! s.isEmpty()  && p >= 0 && n >=0);
-		this.nom = s;
-		this.prix = p;
-		this.numero = n;
-	}
-	/* getters*/	
-	public String getNom() {
-		return this.nom;
-	}
-	public double getPrix() {
-		return this.prix;
+	public Article(String name, double price, int number) {
+		assert ( ! name.isEmpty()  && price >= 0 && number >=0);
+		this.name = name;
+		this.price = price;
+		this.number = number;
 	}
 
-	public double getNumero() {
-		return this.numero;
+	public String getName() {
+		return this.name;
+	}
+	public double getPrice() {
+		return this.price;
 	}
 
-	/*tests égalité */
+	public double getNumber() {
+		return this.number;
+	}
+
+	/**
+	 * Test d'égalité
+	 * @param article l'article à tester
+	 * @return vrai si l'article en parametre est identique à l'objet courant
+	 */
 	public Boolean  isEqual(Article article) {
-		return  this.nom.equals(article.getNom()) &&
-				this.prix == article.getPrix()    &&
-				this.numero == article.getNumero();
+		return  this.name.equals(article.getName()) &&
+				this.price == article.getPrice()    &&
+				this.number == article.getNumber();
 	}
 	
 	public Boolean smallerThan(Article article) {
-		return this.prix < article.getPrix() ||
-				(this.prix == article.getPrix() && this.numero < article.getNumero());
+		return this.price < article.getPrice() ||
+				(this.price == article.getPrice() && this.number < article.getNumber());
 	}
 
 }

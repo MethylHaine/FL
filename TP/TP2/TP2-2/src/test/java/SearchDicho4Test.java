@@ -10,7 +10,7 @@ import org.junit.rules.Timeout;
 import main.java.Article;
 import main.java.Magasin;
 
-public class ChercherDicho4Test {
+public class SearchDicho4Test {
 	
 	private Article articleValid;
 	private Article articleValid2;
