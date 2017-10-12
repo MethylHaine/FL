@@ -1,2 +1,5 @@
-Modele-de-document-Rapport.dotx
+*.dotx
+*.docx
 Normes langage C
+.metadata/
+bin/
