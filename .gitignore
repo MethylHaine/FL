@@ -2,6 +2,6 @@
 *.docx
 *.txt
 Normes langage C
-.metadata
-bin
+/.metadata/*
+/bin/*
 .idea
