@@ -1,0 +1,23 @@
+package essai;
+
+public class Essai {
+	
+	private double val;
+	
+	public Essai(double val) {
+		this.val = val;
+	}
+	
+	public void ajouter(double val) {
+		this.val += val;
+	}
+
+	public double getVal() {
+		return val;
+	}
+
+	public void setVal(int val) {
+		this.val = val;
+	}
+
+}

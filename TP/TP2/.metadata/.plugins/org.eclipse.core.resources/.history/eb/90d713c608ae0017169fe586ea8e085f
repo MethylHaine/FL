@@ -1,0 +1,14 @@
+package test.java;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ChercherDicho3 {
+
+	@Test
+	public void testChercherDicho3() {
+		fail("Not yet implemented");
+	}
+
+}

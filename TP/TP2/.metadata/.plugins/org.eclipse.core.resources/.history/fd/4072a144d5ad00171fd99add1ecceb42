@@ -1,0 +1,71 @@
+package test.java;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import main.java.Article;
+
+public class ArticleTest {
+	
+	private Article articleValide;
+	private Article articleValide2;
+	@SuppressWarnings("unused")
+	private Article articleInvalide;
+
+	@Before
+	public void setUp() throws Exception {
+		articleValide = new Article("Article1", 50, 1);
+		articleValide2 = new Article("Article2", 50, 2);
+		//System.out.println("Appel de setUp() - @Before");
+		
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//System.out.println("Appel de tearDown() - @After");
+	}
+
+	@Test(expected=AssertionError.class)
+	public void testArticleValide() {
+		articleInvalide = new Article("", -50, -32);
+	}
+
+
+	@Test
+	public void testGetNom() {
+		assertEquals("Article1", articleValide.getNom());
+	}
+
+	@Test
+	public void testGetPrix() {
+		assertEquals(50, articleValide.getPrix(), 0);
+	}
+
+	@Test
+	public void testGetNumero() {
+		assertEquals(1, articleValide.getNumero(), 0);
+	}
+
+	@Test
+	public void testIsEqual() {
+		assertTrue(articleValide.isEqual(articleValide));
+		assertFalse(articleValide.isEqual(articleValide2));
+		assertFalse(articleValide.isEqual(new Article("Art", 50, 1)));
+		assertFalse(articleValide.isEqual(new Article("Article1", 45, 1)));
+		assertFalse(articleValide.isEqual(new Article("Article1", 50, 2)));
+	}
+
+	@Test
+	public void testSmallerThan() {
+		assertTrue(articleValide.smallerThan(articleValide2));
+		assertFalse(articleValide2.smallerThan(articleValide));
+		assertFalse(articleValide.smallerThan(new Article("Article1", 45, 1)));
+		assertFalse(articleValide.smallerThan(new Article("Article1", 45, 2)));
+	}
+
+}

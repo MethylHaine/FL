@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ChercherDichoEtuTest" project="TP2-2" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="test.java.ChercherDichoEtuTest" time="0.001">
+    <testcase name="chercherDichoEtuElementNotInTableTest" classname="test.java.ChercherDichoEtuTest" time="0.001"/>
+    <testcase name="chercherDichoEtuElementWrongNameTest" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+    <testcase name="chercherDichoElementMini" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+    <testcase name="chercherDichoEtuElementWrongNumber" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+    <testcase name="chercherDichoEtuElementInTableTest" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+    <testcase name="chercherDichoElementMax" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+    <testcase name="chercherDichoEtuElementWrongPrice" classname="test.java.ChercherDichoEtuTest" time="0.0"/>
+  </testsuite>
+</testrun>

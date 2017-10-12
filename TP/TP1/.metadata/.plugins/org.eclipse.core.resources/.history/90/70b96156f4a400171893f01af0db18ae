@@ -1,0 +1,60 @@
+package triangle;
+
+public class Triangle {
+	
+	private double coteA;
+	private double coteB;
+	private double coteC;
+	
+	public Triangle(double coteA, double coteB, double coteC) {
+		this.coteA = coteA;
+		this.coteB = coteB;
+		this.coteC = coteC;
+	}
+	
+	public double[] readData(String fileToRead) {
+		return new double[0];
+	}
+	
+	/**
+	 * Vérifie le théorème de l'inégalité triangulaire pour 3 cotés a, b et c
+	 * a + b > c
+	 * a + c > b
+	 * b + c > a 
+	 * @return Vrai si les 3 coté forment un triangle, faux sinon
+	 */
+	public boolean isTriangle() {
+		return (coteA + coteB > coteC && 
+				coteA + coteC > coteB &&
+				coteB + coteC > coteA) ;
+	}
+	
+	public int typeTriangle() {
+		if(!isTriangle()) {
+			return -1 ;
+		}
+		
+		if(coteA == coteB && coteA == coteC && coteB == coteC) {
+			return 3;
+		}
+		
+		if(coteA == coteB || coteB == coteC || coteA == coteC) {
+			return 2;
+		}
+		
+		return 1;
+	}
+
+	public double getCoteA() {
+		return coteA;
+	}
+
+	public double getCoteB() {
+		return coteB;
+	}
+
+	public double getCoteC() {
+		return coteC;
+	}
+
+}
