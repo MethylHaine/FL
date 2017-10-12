@@ -1,9 +1,9 @@
 *.dotx
 *.docx
 Normes langage C
-.metadata/
-bin/
+*/.metadata/*
+*/bin/*
 Modele-de-document-Rapport.dotx
 Normes langage C
 *.txt
-
+*/.idea/*
