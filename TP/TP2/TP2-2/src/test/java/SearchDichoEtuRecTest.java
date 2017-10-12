@@ -8,14 +8,14 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 
 import main.java.Article;
-import main.java.Magasin;
+import main.java.Shop;
 
-public class ChercherDichoEtuTest {
+public class SearchDichoEtuRecTest {
 	
 	private Article articleValid;
 	private Article articleValid2;
 	private Article articleValid3;
-	private Magasin magasin;
+	private Shop shop;
 	
 	@Rule
 	public Timeout globalTimeout = Timeout.seconds(5);
@@ -25,60 +25,60 @@ public class ChercherDichoEtuTest {
 		articleValid = new Article("Article1", 50, 1);
 		articleValid2 = new Article("Article2", 51, 2);
 		articleValid3 = new Article("Article3", 52, 3);
-		magasin = new Magasin(10);
-		magasin.insererArticle(articleValid);
-		magasin.insererArticle(articleValid2);
-		magasin.insererArticle(articleValid3);
+		shop = new Shop(10);
+		shop.insertArticle(articleValid);
+		shop.insertArticle(articleValid2);
+		shop.insertArticle(articleValid3);
 	}
 
 	@Test
-	public void chercherDichoEtuElementInTableTest() {
+	public void searchDichoEtuRecElementInTableTest() {
 		Article articleToFind = new Article("Article3", 52, 3);
-		assertTrue(magasin.chercherDichoEtu(articleToFind));
+		assertTrue(shop.searchDichoEtuRec(articleToFind, 0, shop.getNbArticle()));
 		assertTrue(articleValid3.isEqual(articleToFind));
 	}
 	
 	@Test
-	public void chercherDichoEtuElementNotInTableTest() {
+	public void searchDichoEtuRecElementNotInTableTest() {
 		Article articleToFindFalse = new Article("ToFindFalse", 51.5, 5);
-		assertFalse(magasin.chercherDichoEtu(articleToFindFalse));
+		assertFalse(shop.searchDichoEtuRec(articleToFindFalse, 0, shop.getNbArticle()));
 		assertFalse(articleValid3.isEqual(articleToFindFalse));
 	}
 
 	@Test
-	public void chercherDichoEtuElementWrongNameTest() {
+	public void searchDichoEtuRecElementWrongName() {
 		Article articleToFindWrongName = new Article("WrongName", 52, 3);
-		assertFalse(magasin.chercherDichoEtu(articleToFindWrongName));
+		assertFalse(shop.searchDichoEtuRec(articleToFindWrongName, 0, shop.getNbArticle()));
 		assertFalse(articleValid3.isEqual(articleToFindWrongName));	
 	}
 	
 	@Test
-	public void chercherDichoEtuElementWrongNumber() {
+	public void searchDichoEtuRecElementWrongNumber() {
 		Article articleToFindWrongNumber = new Article("Article3", 52, 5);
-		assertFalse(magasin.chercherDichoEtu(articleToFindWrongNumber));
+		assertFalse(shop.searchDichoEtuRec(articleToFindWrongNumber, 0, shop.getNbArticle()));
 		assertFalse(articleValid3.isEqual(articleToFindWrongNumber));
 	}
 	
 	@Test
-	public void chercherDichoEtuElementWrongPrice() {
+	public void searchDichoEtuRecElementWrongPrice() {
 		Article articleToFindWrongPrice = new Article("Article3", 52.01, 3);
-		assertFalse(magasin.chercherDichoEtu(articleToFindWrongPrice));
+		assertFalse(shop.searchDichoEtuRec(articleToFindWrongPrice, 0, shop.getNbArticle()));
 		assertFalse(articleValid3.isEqual(articleToFindWrongPrice));
 	}
 	
 	@Test
-	public void chercherDichoElementMini() {
+	public void searchDichoElementMini() {
 		Article articleFree = new Article("Article3", 0.00, 3);
-		assertFalse(magasin.chercherDichoEtu(articleFree)) ;
-		magasin.insererArticle(articleFree);
-		assertTrue(magasin.chercherDichoEtu(articleFree)) ;
+		assertFalse(shop.searchDichoEtuRec(articleFree, 0, shop.getNbArticle())) ;
+		shop.insertArticle(articleFree);
+		assertTrue(shop.searchDichoEtuRec(articleFree, 0, shop.getNbArticle())) ;
 	}
 	
 	@Test
-	public void chercherDichoElementMax() {
+	public void searchDichoElementMax() {
 		Article articleExpensive = new Article("Article3", 10000.01, 3);
-		assertFalse(magasin.chercherDichoEtu(articleExpensive)) ;
-		magasin.insererArticle(articleExpensive);
-		assertTrue(magasin.chercherDichoEtu(articleExpensive)) ;
+		assertFalse(shop.searchDichoEtuRec(articleExpensive, 0, shop.getNbArticle())) ;
+		shop.insertArticle(articleExpensive);
+		assertTrue(shop.searchDichoEtuRec(articleExpensive, 0, shop.getNbArticle())) ;
 	}
 }

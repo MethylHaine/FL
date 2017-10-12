@@ -7,9 +7,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
 import main.java.Article;
-import main.java.Magasin;
+import main.java.Shop;
 
-public class ChercherDicho1Test {
+public class SearchDicho1Test {
 	
 	
 	private Article articleValid;
@@ -17,7 +17,7 @@ public class ChercherDicho1Test {
 	private Article articleValid3;
 	private Article articleToFind;
 	private Article articleToFindFalse;
-	private Magasin magasin;
+	private Shop shop;
 	
 	@Rule
 	public Timeout globalTimeout = Timeout.seconds(10);
@@ -29,20 +29,20 @@ public class ChercherDicho1Test {
 		articleValid3 = new Article("Article3", 52, 3);
 		articleToFind = new Article("Article3", 52, 3);
 		articleToFindFalse = new Article("ToFindFalse", 51.5, 5);
-		magasin = new Magasin(3);
-		magasin.insererArticle(articleValid);
-		magasin.insererArticle(articleValid2);
-		magasin.insererArticle(articleValid3);
+		shop = new Shop(3);
+		shop.insertArticle(articleValid);
+		shop.insertArticle(articleValid2);
+		shop.insertArticle(articleValid3);
 		
 		//System.out.println("Appel de setUp() - @Before");
 	}
 	
 	@Test
-	public void chercherDicho1ElementInStock() throws InterruptedException {
+	public void searchDicho1ElementInStock() throws InterruptedException {
 		Thread notCurrentThread = new Thread() {
 			@Override
 			public void run() {
-				assertTrue(magasin.chercherDicho1(articleToFind));
+				assertTrue(shop.searchDicho1(articleToFind));
 			}
 		};
 
@@ -51,18 +51,18 @@ public class ChercherDicho1Test {
 		//Let the current thread sleep (not the created thread!)
 		Thread.sleep(5000);
 		System.err.println("Test : " + Thread.currentThread().getName() + " => Boucle Infinie ! ");
-		System.err.println("Valeur à trouver : " + articleToFind.getPrix() + " présente dans stock");
+		System.err.println("Valeur à trouver : " + articleToFind.getPrice() + " présente dans stock");
 		System.err.println("Le thread est toujours en vie ? " + Thread.currentThread().isAlive());
 		System.err.println("Arrêt du test");
 		assertTrue(notCurrentThread.isAlive());
 	}
 
 	@Test
-	public void chercherDicho1ElementNotInStock() throws InterruptedException {
+	public void searchDicho1ElementNotInStock() throws InterruptedException {
 		Thread notCurrentThread = new Thread() {
 			@Override
 			public void run() {
-				assertFalse(magasin.chercherDicho1(articleToFindFalse));
+				assertFalse(shop.searchDicho1(articleToFindFalse));
 			}
 		};
 
@@ -71,7 +71,7 @@ public class ChercherDicho1Test {
 		//Let the current thread sleep (not the created thread!)
 		Thread.sleep(5000);
 		System.err.println("Test : " + Thread.currentThread().getName() + " => Boucle Infinie ! ");
-		System.err.println("Valeur à trouver : " + articleToFindFalse.getPrix() + " pas présente dans stock");
+		System.err.println("Valeur à trouver : " + articleToFindFalse.getPrice() + " pas présente dans stock");
 		System.err.println("Le thread est toujours en vie ? " + Thread.currentThread().isAlive());
 		System.err.println("Arrêt du test");
 		assertTrue(notCurrentThread.isAlive());

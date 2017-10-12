@@ -7,76 +7,96 @@ import org.junit.Test;
 
 import main.java.Article;
 
+/**
+ * Test unitaire de la classe Article.
+ * Vous trouverez une description pour les tests les moins explicites
+ *
+ * @author MESTRALLET Alexis
+ * @author RISCH Philippe
+ */
 public class ArticleTest {
 	
-	private Article articleValide;
-	private Article articleValide2;
+	private Article articleValid;
+	private Article articleValid2;
 	@SuppressWarnings("unused")
-	private Article articleInvalide;
+	private Article articleInvalid;
 
 	@Before
 	public void setUp() throws Exception {
-		articleValide = new Article("Article1", 50, 1);
-		articleValide2 = new Article("Article2", 50, 2);
-		//System.out.println("Appel de setUp() - @Before");
-		
+		articleValid = new Article("Article1", 50, 1);
+		articleValid2 = new Article("Article2", 50, 2);
 	}
 
+	/**
+	 * Test l'assertion du cas name.isEmpty()
+	 */
 	@Test(expected=AssertionError.class)
 	public void ArticleEmptyNameTest() {
-		articleInvalide = new Article("", 50.99, 3);
+		articleInvalid = new Article("", 50.99, 3);
 	}
-	
+
+	/**
+	 * Test de l'assertion du cas prix < 0
+	 */
 	@Test(expected=AssertionError.class)
 	public void ArticleNegativePriceTest() {
-		articleInvalide = new Article("Article1", -50.99, 3);
+		articleInvalid = new Article("Article1", -50.99, 3);
 	}
-	
+
+	/**
+	 * Test de l'assertion du cas number < 0
+	 */
 	@Test(expected=AssertionError.class)
 	public void ArticleNegativeNumberTest() {
-		articleInvalide = new Article("Article1", 50.99, -3);
+		articleInvalid = new Article("Article1", 50.99, -3);
 	}
-	
+
+	/**
+	 * Test de l'assertion du cas le plus défavorable
+	 */
 	@Test(expected=AssertionError.class)
 	public void ArticleInvalidTest() {
-		articleInvalide = new Article("", -25.99, -3);
+		articleInvalid = new Article("", -25.99, -3);
 	}
-	
+
+	/**
+	 * Test de l'article gratuit valide
+	 */
 	@Test
 	public void ArticleValideTest() {
-		articleInvalide = new Article("Article1", 0.00, 0);
+		articleInvalid = new Article("Article1", 0.00, 0);
 	}
 
 	@Test
-	public void testGetNom() {
-		assertEquals("Article1", articleValide.getNom());
+	public void getNameTest() {
+		assertEquals("Article1", articleValid.getName());
 	}
 
 	@Test
-	public void testGetPrix() {
-		assertEquals(50, articleValide.getPrix(), 0);
+	public void getPriceTest() {
+		assertEquals(50, articleValid.getPrice(), 0);
 	}
 
 	@Test
-	public void testGetNumero() {
-		assertEquals(1, articleValide.getNumero(), 0);
+	public void getNumberTest() {
+		assertEquals(1, articleValid.getNumber(), 0);
 	}
 
 	@Test
-	public void testIsEqual() {
-		assertTrue(articleValide.isEqual(articleValide));
-		assertFalse(articleValide.isEqual(articleValide2));
-		assertFalse(articleValide.isEqual(new Article("Art", 50, 1)));
-		assertFalse(articleValide.isEqual(new Article("Article1", 45, 1)));
-		assertFalse(articleValide.isEqual(new Article("Article1", 50, 2)));
+	public void isEqualTest() {
+		assertTrue(articleValid.isEqual(articleValid));
+		assertFalse(articleValid.isEqual(articleValid2));
+		assertFalse(articleValid.isEqual(new Article("Art", 50, 1)));
+		assertFalse(articleValid.isEqual(new Article("Article1", 45, 1)));
+		assertFalse(articleValid.isEqual(new Article("Article1", 50, 2)));
 	}
 
 	@Test
-	public void testSmallerThan() {
-		assertTrue(articleValide.smallerThan(articleValide2));
-		assertFalse(articleValide2.smallerThan(articleValide));
-		assertFalse(articleValide.smallerThan(new Article("Article1", 45, 1)));
-		assertFalse(articleValide.smallerThan(new Article("Article1", 45, 2)));
-		assertTrue(articleValide.smallerThan(new Article("Article1", 55, 1)));
+	public void smallerThanTest() {
+		assertTrue(articleValid.smallerThan(articleValid2));
+		assertFalse(articleValid2.smallerThan(articleValid));
+		assertFalse(articleValid.smallerThan(new Article("Article1", 45, 1)));
+		assertFalse(articleValid.smallerThan(new Article("Article1", 45, 2)));
+		assertTrue(articleValid.smallerThan(new Article("Article1", 55, 1)));
 	}
 }
