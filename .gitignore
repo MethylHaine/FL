@@ -7,3 +7,4 @@ Normes langage C
 bin
 .idea
 .recommenders
+*.iml
