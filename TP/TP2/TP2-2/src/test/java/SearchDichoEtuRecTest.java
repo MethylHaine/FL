@@ -6,9 +6,13 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import main.java.Article;
 import main.java.Shop;
+
+@RunWith(JUnit4.class)
 
 public class SearchDichoEtuRecTest {
 	
@@ -42,7 +46,9 @@ public class SearchDichoEtuRecTest {
 	public void searchDichoEtuRecElementNotInTableTest() {
 		Article articleToFindFalse = new Article("ToFindFalse", 51.5, 5);
 		assertFalse(shop.searchDichoEtuRec(articleToFindFalse, 0, shop.getNbArticle()));
-		assertFalse(articleValid3.isEqual(articleToFindFalse));
+		for(int i = 0; i < shop.getNbArticle(); i++) {
+			assertFalse(shop.getStock()[0].isEqual(articleToFindFalse));
+		}
 	}
 
 	@Test

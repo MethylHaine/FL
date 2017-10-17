@@ -6,9 +6,13 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import main.java.Article;
 import main.java.Shop;
+
+@RunWith(JUnit4.class)
 
 public class SearchDicho4Test {
 	
@@ -42,7 +46,9 @@ public class SearchDicho4Test {
 	public void searchDicho4ElementNotInTableTest() {
 		Article articleToFindFalse = new Article("ToFindFalse", 51.5, 5);
 		assertFalse(shop.searchDicho4(articleToFindFalse));
-		assertFalse(articleValid3.isEqual(articleToFindFalse));
+		for(int i = 0; i < shop.getNbArticle(); i++) {
+			assertFalse(shop.getStock()[0].isEqual(articleToFindFalse));
+		}
 	}
 
 	@Test

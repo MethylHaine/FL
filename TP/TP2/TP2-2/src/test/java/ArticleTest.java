@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import main.java.Article;
 
@@ -14,6 +16,9 @@ import main.java.Article;
  * @author MESTRALLET Alexis
  * @author RISCH Philippe
  */
+
+@RunWith(JUnit4.class)
+
 public class ArticleTest {
 	
 	private Article articleValid;
